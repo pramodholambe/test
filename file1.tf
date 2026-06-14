@@ -2,6 +2,7 @@ terraform {
     backend "s3" {
     bucket = "bucket-pramod"
     region = "ap-south-1"
+    key = "tfstate"
     } 
 }
 
