@@ -1,20 +1,21 @@
 terraform {
     backend "s3" {
-    bucket = "bucket-pramod"
-    region = "ap-south-1"
+    bucket = "var.mybucket"
+    region = "var.region"
     key = "tfstate"
     } 
 }
 
 provider "aws" {
-    region= "ap-south-1"
+    region= "var.region"
 }
 resource "aws_instance" "myec2"{
-    ami= "ami-01a00762f46d584a1"
-    instance_type= "t3.micro"
-vpc_security_group_ids = ["sg-0207caf3f6f306804"]
+    ami= "var.ami"
+    instance_type= "var.instance_type"
+    key_name = "var.key_name"
+vpc_security_group_ids = "var.mysg"
 tags = {
-    Name = "2nd-ec2"
+    Name = "var.instance-name"
     name = "pramod"
     env = "dev"
 }
